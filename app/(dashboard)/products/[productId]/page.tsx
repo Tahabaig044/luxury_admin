@@ -8,24 +8,27 @@ const ProductDetails = ({ params }: { params: { productId: string }}) => {
   const [loading, setLoading] = useState(true)
   const [productDetails, setProductDetails] = useState<ProductType | null>(null)
 
-  const getProductDetails = async () => {
-    try { 
-      const res = await fetch(`/api/products/${params.productId}`, {
-        method: "GET"
-      })
-      const data = await res.json()
-      setProductDetails(data)
-      setLoading(false)
-    } catch (err) {
-      console.log("[productId_GET]", err)
-    }
-  }
-
   useEffect(() => {
-    getProductDetails()
-  }, [])
+    const getProductDetails = async () => {
+      try { 
+        const res = await fetch(`/api/products/${params.productId}`, {
+          method: "GET"
+        })
+        const data = await res.json()
+        setProductDetails(data)
+      } catch (err) {
+        console.log("[productId_GET]", err)
+      } finally {
+        setLoading(false)
+      }
+    }
 
-  return loading ? <Loader /> : (
+    getProductDetails()
+  }, [params.productId])
+
+  return loading ? (
+    <Loader />
+  ) : (
     <ProductForm initialData={productDetails} />
   )
 }
