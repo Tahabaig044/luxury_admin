@@ -24,7 +24,7 @@ const LeftSideBar = () => {
       {/* Logo */}
       <div className="px-4 pt-4">
         <Image 
-          src="/logo.png" 
+          src="/sara2.png" 
           alt="Asim Jofa" 
           width={180} 
           height={80}

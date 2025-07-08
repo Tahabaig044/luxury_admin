@@ -26,7 +26,7 @@ const TopBar = () => {
       <div className="flex items-center gap-3">
         <Crown className="w-8 h-8 text-gold-500" />
         <Image 
-          src="/logo.png" 
+          src="/sara2.png" 
           alt="logo" 
           width={150} 
           height={70}
